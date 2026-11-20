@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Victoria Kosgei - Data Analyst and Business Analyst portfolio featuring Python, SQL, Excel, Power BI and business intelligence.">
+  <meta name="author" content="Victoria Kosgei">
+  <title>Victoria Kosgei | Data Analyst &amp; Business Analyst</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:wght@700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0f0f19;
+      --surface: #161624;
+      --card: #1e1e32;
+      --accent: #f59e0b;
+      --accent-outline: rgba(245,158,11,0.45);
+      --text: #ffffff;
+      --text-soft: #cbd5e1;
+      --muted: #94a3b8;
+      --border: rgba(255,255,255,0.08);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .heading-font {
+      font-family: 'Fraunces', serif;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    /* Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(15,15,25,0.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-inner {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      color: var(--accent);
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 1.2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      position: relative;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+      transition: color 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--accent);
+    }
+
+    .nav-links a.active {
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: var(--accent);
+      font-size: 1.7rem;
+      cursor: pointer;
+    }
+
+    /* Hero */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(15,15,25,0.92),
+        rgba(15,15,25,0.70)
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding-top: 72px;
+      max-width: 760px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6rem);
+      line-height: 1;
+      margin-bottom: 22px;
+    }
+
+    .hero h2 {
+      color: var(--text-soft);
+      font-size: clamp(1.3rem, 3vw, 2rem);
+      font-weight: 400;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      color: var(--text-soft);
+      max-width: 650px;
+      font-size: 1.05rem;
+      margin-bottom: 32px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--bg);
+      padding: 12px 24px;
+      border-radius: 999px;
+      border: 0;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.92;
+    }
+
+    .btn-outline {
+      margin-left: 10px;
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid var(--accent);
+    }
+
+    /* General sections */
+    section {
+      padding: 90px 0;
+    }
+
+    .section-alt {
+      background: var(--surface);
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+
+    .section-heading h2 {
+      font-size: 2.3rem;
+      margin-bottom: 10px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-image {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+
+    .about-content h2 {
+      font-size: 2.3rem;
+      margin-bottom: 20px;
+    }
+
+    .about-content p {
+      color: var(--text-soft);
+      margin-bottom: 16px;
+    }
+
+    .about-points {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .about-point {
+      background: var(--card);
+      border-radius: 12px;
+      padding: 16px;
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .about-point:hover {
+      transform: translateY(-5px);
+      border-color: rgba(245,158,11,0.45);
+    }
+
+    .about-point strong {
+      display: block;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .about-point span {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .skill-card {
+      background: var(--card);
+      border-radius: 14px;
+      padding: 22px;
+      text-align: center;
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(245,158,11,0.45);
+    }
+
+    .skill-card h3 {
+      color: var(--accent);
+      font-size: 1rem;
+      margin-bottom: 7px;
+    }
+
+    .skill-card p {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    /* Projects */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 26px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(245,158,11,0.45);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+    }
+
+    .project-content {
+      padding: 24px;
+    }
+
+    .project-content h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .project-content p {
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .tag {
+      background: rgba(245,158,11,0.10);
+      color: var(--accent);
+      border: 1px solid rgba(245,158,11,0.25);
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+    }
+
+    .project-link {
+      color: var(--accent);
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Experience */
+    .experience-card {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px;
+    }
+
+    .experience-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 5px;
+    }
+
+    .experience-meta {
+      color: var(--accent);
+      margin-bottom: 16px;
+      font-weight: 700;
+      font-size: 0.9rem;
+    }
+
+    .experience-card p,
+    .experience-card li {
+      color: var(--text-soft);
+    }
+
+    .experience-card ul {
+      padding-left: 20px;
+      margin-top: 14px;
+    }
+
+    .experience-card li {
+      margin-bottom: 8px;
+    }
+
+    /* Contact */
+    .contact-box {
+      position: relative;
+      max-width: 750px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      font-size: 2.4rem;
+      margin-bottom: 14px;
+    }
+
+    .contact-box p {
+      color: var(--text-soft);
+      margin-bottom: 28px;
+    }
+
+    .contact-details {
+      position: absolute;
+      z-index: 10;
+      top: calc(100% + 14px);
+      left: 50%;
+      width: min(100%, 480px);
+      margin: 0;
+      padding: 18px;
+      background: var(--card);
+      border: 1px solid rgba(245,158,11,0.45);
+      border-radius: 16px;
+      text-align: left;
+      box-shadow: 0 16px 36px rgba(0,0,0,0.3);
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: translate(-50%, -8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+    }
+
+    .contact-details.open {
+      display: grid;
+      gap: 12px;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: translate(-50%, 0);
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      padding: 8px;
+      color: var(--text-soft);
+      overflow-wrap: anywhere;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      transition: color 0.25s ease, transform 0.25s ease, border-color 0.25s ease, background-color 0.25s ease;
+    }
+
+    .contact-detail:hover,
+    .contact-detail:focus-visible {
+      color: var(--accent);
+      transform: translateY(-3px);
+      border-color: rgba(245,158,11,0.45);
+      background: rgba(245,158,11,0.06);
+      outline: none;
+    }
+
+    .contact-detail .social-link {
+      flex: 0 0 46px;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .contact-detail:hover .social-link,
+    .contact-detail:focus-visible .social-link {
+      border-color: var(--accent);
+    }
+
+    .social-link {
+      width: 46px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--card);
+      color: var(--accent);
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      transition: transform 0.25s ease, border-color 0.25s ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-3px);
+      border-color: var(--accent);
+    }
+
+    .social-link svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* Footer */
+    footer {
+      padding: 28px 0;
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+
+    footer p {
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .about-image {
+        max-width: 360px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .menu-btn {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: var(--bg);
+        display: none;
+        flex-direction: column;
+        gap: 0;
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links a {
+        width: 100%;
+        padding: 13px 6%;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-points {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-outline {
+        margin-left: 0;
+        margin-top: 10px;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      .project-image {
+        height: 180px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <div class="container nav-inner">
+      <a href="#home" class="logo">VK</a>
+
+      <button class="menu-btn" id="menuBtn" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navLinks">
+        ☰
+      </button>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="home">
+    <img
+      class="hero-bg"
+      src="https://images.pexels.com/photos/10325707/pexels-photo-10325707.png?auto=compress&cs=tinysrgb&w=1920"
+      alt="Abstract orange network lines on a dark background"
+    >
+
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content">
+      <p class="eyebrow">Hello, I'm</p>
+
+      <h1 class="heading-font">Victoria Kosgei</h1>
+
+      <h2>Data Analyst | Business Analyst | Business Intelligence</h2>
+
+      <p>
+        I transform complex business data into actionable insights through Python, SQL, Excel and Power BI. I specialize in identifying business problems, investigating performance gaps, improving data quality and developing analytical solutions that support informed decision-making.
+      </p>
+
+      <a href="#projects" class="btn">View My Work</a>
+      <a href="#contact" class="btn btn-outline">Let's Connect</a>
+      <a href="Victoria_Kosgei_Prof_CV.pdf" class="btn btn-outline">View Resume</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container about-grid">
+
+        <img
+          class="about-image"
+          src="images/myself.png"
+          alt="Victoria Kosgei - Data Analyst"
+        >
+
+        <div class="about-content">
+          <h2 class="heading-font">About Me</h2>
+
+          <p>
+            I'm a Data Analyst based in Kenya with practical experience
+            transforming data into insights that support better business decisions.
+          </p>
+
+          <p>
+            I have worked on financial, logistics, retail and healthcare
+            analytics projects, focusing on data cleaning, exploratory
+            analysis, SQL querying, KPI validation and dashboard development.
+          </p>
+
+          <p>
+            I also use AI tools to support brainstorming, research,
+            analytical problem-solving and report development. I enjoy
+            turning complex findings into clear recommendations for
+            technical and non-technical audiences.
+          </p>
+
+          <div class="about-points">
+            <div class="about-point">
+              <strong>Data Analysis</strong>
+              <span>Turning raw data into useful business insights.</span>
+            </div>
+
+            <div class="about-point">
+              <strong>Business Intelligence</strong>
+              <span>Building dashboards, KPIs and decision-support reports.</span>
+            </div>
+
+            <div class="about-point">
+              <strong>Problem Solving</strong>
+              <span>Using data to investigate business questions.</span>
+            </div>
+
+            <div class="about-point">
+              <strong>Continuous Learning</strong>
+              <span>Developing practical analytics and technical skills.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="section-alt">
+      <div class="container">
+
+        <div class="section-heading">
+          <h2 class="heading-font">Skills &amp; Tools</h2>
+          <p>
+            Technologies and analytical skills I use to explore data,
+            create visualizations and communicate business insights.
+          </p>
+        </div>
+
+        <div class="skills-grid">
+
+          <div class="skill-card">
+            <h3>Python</h3>
+            <p>Pandas, NumPy, data cleaning, EDA and visualization</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>SQL</h3>
+            <p>MySQL, joins, aggregations and business queries</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Excel</h3>
+            <p>PivotTables, lookup functions, data preparation and reporting</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Power BI</h3>
+            <p>DAX, dashboards, KPIs and data modelling</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Tableau</h3>
+            <p>Data visualization and interactive reporting</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Business Analysis</h3>
+            <p>Root-cause investigation, performance analysis and recommendations</p>
+          </div>
+
+          <div class="skill-card">
+            <h3>Data Quality</h3>
+            <p>Missing values, duplicates, reconciliation and validation</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <div class="container">
+
+        <div class="section-heading">
+          <h2 class="heading-font">Featured Projects</h2>
+          <p>
+            Selected business case studies demonstrating how I investigate
+            performance, improve data quality and turn complex data into decisions.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+
+          <!-- Financial Performance -->
+          <article class="project-card">
+            <img
+              class="project-image"
+              src="https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg?auto=compress&cs=tinysrgb&w=1000"
+              alt="Digital banking and financial analytics concept"
+            >
+
+            <div class="project-content">
+              <h3>1. Financial Performance &amp; Transaction Monitoring</h3>
+
+              <p><strong>Business problem:</strong> Understanding transaction performance and identifying patterns affecting financial service monitoring.</p>
+              <p><strong>Key finding:</strong> 90.47% transaction success across 12,000 transactions.</p>
+
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Excel</span>
+                <span class="tag">Power BI</span>
+              </div>
+
+              <a
+                class="project-link"
+                href="https://github.com/VictoriaKosgei/Fintrust-Digital-Bank"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Project on GitHub →
+              </a>
+            </div>
+          </article>
+
+          <!-- Logistics and Supply Chain -->
+          <article class="project-card">
+            <img
+              class="project-image"
+              src="https://images.pexels.com/photos/4246120/pexels-photo-4246120.jpeg?auto=compress&cs=tinysrgb&w=1000"
+              alt="Logistics and supply chain operations"
+            >
+
+            <div class="project-content">
+              <h3>2. Logistics &amp; Supply Chain Performance</h3>
+
+              <p><strong>Business problem:</strong> Delivery delays, cancellations and inventory management challenges.</p>
+              <p><strong>Key finding:</strong> 36.28% on-time delivery against an 80% target.</p>
+
+              <div class="tags">
+                <span class="tag">Power BI</span>
+                <span class="tag">Excel</span>
+                <span class="tag">Data Analysis</span>
+              </div>
+
+              <a
+                class="project-link"
+                href="https://github.com/VictoriaKosgei/Week5_DataAnalytics_SwiftLog_VictoriaKosgei"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Project on GitHub →
+              </a>
+            </div>
+          </article>
+
+          <!-- Healthcare -->
+          <article class="project-card">
+            <img
+              class="project-image"
+              src="https://images.pexels.com/photos/4386467/pexels-photo-4386467.jpeg?auto=compress&cs=tinysrgb&w=1000"
+              alt="Healthcare data and financial reporting"
+            >
+
+            <div class="project-content">
+              <h3>3. Healthcare Data Quality &amp; Financial Reporting</h3>
+
+              <p><strong>Business problem:</strong> Billing-to-appointment mismatches and unreliable departmental revenue allocation.</p>
+              <p><strong>Key finding:</strong> Identified substantial billing-to-appointment mismatches, quantified unallocated revenue and established a validated reporting approach to prevent misleading departmental revenue figures.</p>
+
+              <div class="tags">
+                <span class="tag">Power BI</span>
+                <span class="tag">DAX</span>
+                <span class="tag">Data Modelling</span>
+                <span class="tag">KPI Validation</span>
+              </div>
+
+              <a
+                class="project-link"
+                href="https://github.com/VictoriaKosgei/Health-Connect-Rwanda"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Project on GitHub →
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="section-heading" style="margin-top: 60px;">
+          <h3 class="heading-font">Additional Work</h3>
+          <p>Additional analytics projects that demonstrate my practical skills.</p>
+        </div>
+
+        <div class="projects-grid">
+
+          <!-- Online Retail -->
+          <article class="project-card">
+            <img
+              class="project-image"
+              src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1000"
+              alt="Retail analytics concept"
+            >
+
+            <div class="project-content">
+              <h3>Online Retail EDA</h3>
+
+              <p>
+                Python-based data cleaning and exploratory analysis of an
+                online retail dataset, including revenue analysis, returns,
+                customer activity, country performance and time-based trends.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">EDA</span>
+                <span class="tag">Matplotlib</span>
+              </div>
+
+              <a
+                class="project-link"
+                href="https://github.com/VictoriaKosgei/Data-Analytics-Practice/tree/main/Week-1-Online-Retail-EDA"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Project on GitHub →
+              </a>
+            </div>
+          </article>
+
+          <!-- Netflix -->
+          <article class="project-card">
+            <img
+              class="project-image"
+              src="https://images.pexels.com/photos/4009402/pexels-photo-4009402.jpeg?auto=compress&cs=tinysrgb&w=1000"
+              alt="Entertainment data analysis concept"
+            >
+
+            <div class="project-content">
+              <h3>Netflix Content Analysis</h3>
+
+              <p>
+                Analysis of Netflix titles covering content types, release
+                patterns, genres, countries and other characteristics,
+                supported by cleaned data and business-focused visualizations.
+              </p>
+
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">Power BI</span>
+                <span class="tag">Visualization</span>
+              </div>
+
+              <a
+                class="project-link"
+                href="https://github.com/VictoriaKosgei/Data-Analytics-Practice/tree/main/Week-2-Netflix"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Project on GitHub →
+              </a>
+            </div>
+          </article>
+
+          <!-- SQL -->
+          <article class="project-card">
+            <img
+              class="project-image"
+              src="https://media.istockphoto.com/id/1800292591/photo/sql-structured-query-language-technology-concept-icon-virtual-screen.jpg?s=612x612&w=0&k=20&c=Natt2t_aFsr-KlPiMMQUPKIX6sbDb2hOTRhUFcSq6cA="
+              alt="SQL database analysis concept"
+            >
+
+            <div class="project-content">
+              <h3>SQL Business Analysis</h3>
+
+              <p>
+                SQL-based analysis focused on answering practical business
+                questions through aggregations, filtering, calculations and
+                structured analytical queries using relational datasets.
+              </p>
+
+              <div class="tags">
+                <span class="tag">SQL</span>
+                <span class="tag">MySQL</span>
+                <span class="tag">Business Analysis</span>
+                <span class="tag">Data Querying</span>
+              </div>
+
+              <a
+                class="project-link"
+                href="https://github.com/VictoriaKosgei/Data-Analytics-Practice/tree/main/Week-3-SQL-Data-Querying"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Project on GitHub →
+              </a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="section-alt">
+      <div class="container">
+
+        <div class="section-heading">
+          <h2 class="heading-font">Experience &amp; Learning</h2>
+          <p>
+            Practical experience developed through structured analytics projects
+            and hands-on data work.
+          </p>
+        </div>
+
+        <div class="experience-card">
+          <h3>Data Analyst Intern | AnalystLab Africa</h3>
+
+
+          <ul>
+            <li>Investigated business challenges involving financial transaction performance, logistics delivery inefficiencies, healthcare financial reporting inconsistencies and data quality issues.</li>
+            <li>Analysed financial, logistics and healthcare datasets using Python, SQL, Excel and Power BI to identify performance gaps, trends and reporting inconsistencies.</li>
+            <li>Evaluated 12,000 financial transactions, establishing a 90.47% transaction success rate, and assessed 5,000 logistics orders, identifying a 36.28% on-time delivery rate against an 80% target.</li>
+            <li>Identified significant billing-to-appointment mismatches that affected departmental revenue allocation and required further data reconciliation.</li>
+            <li>Performed data cleaning, duplicate detection, missing-value analysis, relationship validation and KPI reconciliation to improve data reliability.</li>
+            <li>Developed interactive Power BI dashboards, analytical reports and evidence-based recommendations to support business monitoring and informed decision-making.</li>
+            <li>Recommended improvements in transaction monitoring, delivery performance tracking, data validation and financial reporting processes.</li>
+          </ul>
+
+          <p><strong>Tools:</strong> Python, Pandas, SQL, MySQL, Excel, Power BI, DAX, and GitHub.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="container">
+
+        <div class="contact-box">
+          <h2 class="heading-font">Let's Connect</h2>
+
+          <p>
+            Interested in working together, discussing data analytics,
+            or exploring a data challenge? Feel free to reach out.
+          </p>
+
+          <button
+            type="button"
+            class="btn"
+            id="contactToggle"
+            aria-expanded="false"
+            aria-controls="contactDetails"
+          >
+            Get In Touch
+          </button>
+
+          <div class="contact-details" id="contactDetails" aria-hidden="true">
+
+            <a
+              class="contact-detail"
+              href="mailto:victoriajkosgei@gmail.com"
+            >
+              <span class="social-link" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+                </svg>
+              </span>
+              <span><strong>Email</strong><br>victoriajkosgei@gmail.com</span>
+            </a>
+
+            <a
+              class="contact-detail"
+              href="https://wa.me/254108492933"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="social-link" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.198-.347.223-.644.074-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.149-.174.198-.298.298-.496.099-.198.05-.372-.025-.521-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.174-.008-.372-.01-.57-.01s-.52.074-.792.372c-.272.297-1.04 1.016-1.04 2.479 0 1.463 1.065 2.876 1.213 3.074.149.198 2.095 3.2 5.075 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.174-1.413-.075-.124-.273-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.999-3.648-.235-.374a9.86 9.86 0 0 1-1.511-5.26c.002-5.45 4.438-9.886 9.893-9.886 2.64.001 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.44 9.886-9.89 9.886m8.413-18.296A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.893c0 2.096.547 4.142 1.588 5.946L0 24l6.335-1.662a11.93 11.93 0 0 0 5.71 1.454h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413z"/>
+                </svg>
+              </span>
+              <span><strong>WhatsApp</strong><br>+254108492933</span>
+            </a>
+
+            <a
+              class="contact-detail"
+              href="https://www.linkedin.com/in/victoria-kosgei-886582295/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="social-link" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M6.5 8.5A1.75 1.75 0 1 0 6.5 5a1.75 1.75 0 0 0 0 3.5zM5 10h3v9H5v-9zm5 0h2.9v1.23h.04c.4-.76 1.38-1.56 2.84-1.56 3.04 0 3.6 2 3.6 4.6V19h-3v-4.2c0-1-.02-2.3-1.4-2.3-1.4 0-1.62 1.1-1.62 2.23V19h-3v-9z"/>
+                </svg>
+              </span>
+              <span><strong>LinkedIn</strong><br>Victoria Kosgei</span>
+            </a>
+
+            <a
+              class="contact-detail"
+              href="https://github.com/VictoriaKosgei"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span class="social-link" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.63.07-.63 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.31.1-2.73 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.42.2 2.47.1 2.73.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.79-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.6.69.49A10.26 10.26 0 0 0 22 12.25C22 6.58 17.52 2 12 2z"/>
+                </svg>
+              </span>
+              <span><strong>GitHub</strong><br>VictoriaKosgei</span>
+            </a>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Victoria Kosgei. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const contactToggle = document.getElementById("contactToggle");
+    const contactDetails = document.getElementById("contactDetails");
+
+    contactToggle.addEventListener("click", () => {
+      const isOpen = contactDetails.classList.toggle("open");
+      contactToggle.setAttribute("aria-expanded", isOpen);
+      contactDetails.setAttribute("aria-hidden", !isOpen);
+    });
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("show");
+      menuBtn.setAttribute("aria-expanded", isOpen);
+    });
+
+    const navItems = document.querySelectorAll(".nav-links a");
+
+    navItems.forEach(link => {
+      link.addEventListener("click", () => {
+        navItems.forEach(item => {
+          item.classList.remove("active");
+          item.removeAttribute("aria-current");
+        });
+        link.classList.add("active");
+        link.setAttribute("aria-current", "location");
+        navLinks.classList.remove("show");
+        menuBtn.setAttribute("aria-expanded", "false");
+      });
+    });
+
+    const sections = document.querySelectorAll("section, header");
+
+    window.addEventListener("scroll", () => {
+      let current = "";
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      navItems.forEach(item => {
+        item.classList.remove("active");
+        if (item.getAttribute("href") === "#" + current) {
+          item.classList.add("active");
+          item.setAttribute("aria-current", "location");
+        } else {
+          item.removeAttribute("aria-current");
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
